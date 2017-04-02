@@ -1,7 +1,8 @@
 function bind_bang
   switch (commandline -t)
   case "!"
-    commandline -t (history -n 1 | cat); commandline -f repaint
+    set last (string trim -r -- (history -n 1))
+    commandline -t "$last "; commandline -f repaint
   case "*"
     commandline -i !
   end
